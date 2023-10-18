@@ -11,8 +11,8 @@ info:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
 externalDocs:
-    description: "Find out more about Swagger"
-    url: "file://README.md"
+  description: "Find out more about Swagger"
+  url: "file://README.md"
 servers:
   - url: https://api.cards.com
     description: "Production server"
@@ -25,177 +25,180 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-      AuthRequest:
-        type: "object"
-        properties:
-          username:
-            type: "string"
-            example: "user123"
-          password:
-            type: "string"
-            example: "password123"
-      AuthSuccess:
-        type: "object"
-        properties:
-          access_token:
-            type: "string"
-            example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-      AuthError:
-        type: "object"
-        properties:
-          code:
-            type: "integer"
-            example: 400
-          message:
-            type: "string"
-            example: "Invalid username or password"
-      ForgotPasswordRequest:
-        type: "object"
-        properties:
-          login:
-            type: "string"
-            example: "user123"
-          comment:
-            type: "string"
-            example: "I forgot my password"
-      ForgotLoginRequest:
-        type: "object"
-        properties:
-          fullname:
-            type: "string"
-            example: "John Doe"
-          birthdate:
-            type: "string"
-            example: "1990-01-01"
-          comment:
-            type: "string"
-            example: "I forgot my login"
-      GetCardsResponse:
-        type: "array"
-        items:
-          $ref: "#/components/schemas/Card"
-      Card:
-        type: "object"
-        properties:
-          id:
-            type: "integer"
-            example: 1
-          name:
-            type: "string"
-            example: "Card 1"
-          description:
-            type: "string"
-            example: "Card 1 description"
-          blocked:
-            type: "string"
-            enum:
-              - "yes"
-              - "no"
-              - "pending"
-          number:
-            type: "string"
-            example: "1234 5678 9012 3456"
-          cardholder:
-            type: "string"
-            example: "John Doe"
-          common-limit:
-            type: "integer"
-            example: 1000
-          withdrawal-limit:
-            type: "integer"
-            example: 1000
-          purchase-limit:
-            type: "integer"
-            example: 1000
-      BlockCardRequest:
-        type: "object"
-        properties:
-          reason:
-            type: "string"
-            enum:
-              - "lost"
-              - "stolen"
-              - "atm"
-              - "other"
-      GetComplaintsResponse:
-        type: "array"
-        items:
-          $ref: "#/components/schemas/Complaint"
-      Complaint:
-        type: "object"
-        properties:
-          id:
-            type: "integer"
-            example: 1
-          subject:
-            type: "string"
-            example: "Complaint 1"
-          description:
-            type: "string"
-            example: "Complaint 1 description"
-          status:
-            type: "string"
-            enum:
-              - "pending"
-              - "resolved"
-              - "rejected"
-          created_at:
-            type: "string"
-            example: "2020-01-01 00:00:00"
-          updated_at:
-            type: "string"
-            example: "2020-01-01 00:00:00"
-      Transaction:
-        type: "object"
-        properties:
-          id:
-            type: "integer"
-            example: 1
-          type:
-            type: "string"
-            enum:
-              - "withdrawal"
-              - "purchase"
-              - "transfer"
-              - "payment"
-          issuer:
-            type: "string"
-            example: "ATM"
-          amount:
-            type: "integer"
-            example: 100
-          created_at:
-            type: "string"
-            example: "2020-01-01 00:00:00"
-          updated_at:
-            type: "string"
-            example: "2020-01-01 00:00:00"
-      TransactionDetails:
-        type: "object"
-        properties:
-          id:
-            type: "integer"
-            example: 1
-          name:
-            type: "string"
-            example: "transaction 1"
-          amount:
-            type: "integer"
-            example: 100
-          issuer-card:
-            type: "string"
-            example: "1234 5678 9012 3456"
-          issued-at:
-            type: "string"
-            example: "2020-01-01 00:00:00"
-      DisputTransactionRequest:
-        type: "object"
-        properties:
-          reason:
-            type: "string"
-            enum:
-              - "fraud"
-              - "other"
+    AuthRequest:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+          example: "user123"
+        password:
+          type: "string"
+          example: "password123"
+    AuthSuccess:
+      type: "object"
+      properties:
+        access_token:
+          type: "string"
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    AuthError:
+      type: "object"
+      properties:
+        code:
+          type: "integer"
+          example: 400
+        message:
+          type: "string"
+          example: "Invalid username or password"
+    ForgotPasswordRequest:
+      type: "object"
+      properties:
+        login:
+          type: "string"
+          example: "user123"
+        comment:
+          type: "string"
+          example: "I forgot my password"
+    ForgotLoginRequest:
+      type: "object"
+      properties:
+        fullname:
+          type: "string"
+          example: "John Doe"
+        birthdate:
+          type: "string"
+          example: "1990-01-01"
+        comment:
+          type: "string"
+          example: "I forgot my login"
+    GetCardsResponse:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/Card"
+    Card:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        name:
+          type: "string"
+          example: "Card 1"
+        description:
+          type: "string"
+          example: "Card 1 description"
+        blocked:
+          type: "string"
+          enum:
+            - "yes"
+            - "no"
+            - "pending"
+        number:
+          type: "string"
+          example: "1234 5678 9012 3456"
+        cardholder:
+          type: "string"
+          example: "John Doe"
+        common-limit:
+          type: "integer"
+          example: 1000
+        withdrawal-limit:
+          type: "integer"
+          example: 1000
+        purchase-limit:
+          type: "integer"
+          example: 1000
+        default:
+          type: "boolean"
+          example: true
+    BlockCardRequest:
+      type: "object"
+      properties:
+        reason:
+          type: "string"
+          enum:
+            - "lost"
+            - "stolen"
+            - "atm"
+            - "other"
+    GetComplaintsResponse:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/Complaint"
+    Complaint:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        subject:
+          type: "string"
+          example: "Complaint 1"
+        description:
+          type: "string"
+          example: "Complaint 1 description"
+        status:
+          type: "string"
+          enum:
+            - "pending"
+            - "resolved"
+            - "rejected"
+        created_at:
+          type: "string"
+          example: "2020-01-01 00:00:00"
+        updated_at:
+          type: "string"
+          example: "2020-01-01 00:00:00"
+    Transaction:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        type:
+          type: "string"
+          enum:
+            - "withdrawal"
+            - "purchase"
+            - "transfer"
+            - "payment"
+        issuer:
+          type: "string"
+          example: "ATM"
+        amount:
+          type: "integer"
+          example: 100
+        created_at:
+          type: "string"
+          example: "2020-01-01 00:00:00"
+        updated_at:
+          type: "string"
+          example: "2020-01-01 00:00:00"
+    TransactionDetails:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        name:
+          type: "string"
+          example: "transaction 1"
+        amount:
+          type: "integer"
+          example: 100
+        issuer-card:
+          type: "string"
+          example: "1234 5678 9012 3456"
+        issued-at:
+          type: "string"
+          example: "2020-01-01 00:00:00"
+    DisputTransactionRequest:
+      type: "object"
+      properties:
+        reason:
+          type: "string"
+          enum:
+            - "fraud"
+            - "other"
 paths:
   /login:
     put:
@@ -428,6 +431,48 @@ paths:
                   message:
                     type: "string"
                     example: "Invalid access token"
+    patch:
+      summary: Set Card as Default
+      tags:
+        - "Cards"
+      description: Set a card as default
+      operationId: setCardAsDefault
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: "card_id"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            default: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                default:
+                  type: "boolean"
+                  example: true
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Card"
+        400:
+          description: "Invalid access token"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "Invalid access token"
 
   /card/{card_id}/transaction:
     get:
@@ -634,6 +679,35 @@ paths:
                     example: "Invalid access token"
 
   /rate-app:
+    get:
+      summary: "Is App Rated"
+      tags:
+        - "Others"
+      operationId: "isAppRated"
+      description: "Check if the app is rated"
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: "Successful response"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  rated:
+                    type: "boolean"
+                    example: true
+        400:
+          description: "Invalid access token"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    example: "Invalid access token"
     post:
       summary: "Rate App"
       tags:
